@@ -297,7 +297,7 @@ export default {
       this.updateWidth();
       this.updateTrim();
       this.$emit('updated', {
-        containerWidth: this.containerWidth,
+        containerWidth: this.containerWidth + 300,
         containerHeight: this.containerHeight,
         slideWidth: this.slideWidth,
         slideHeight: this.slideHeight,
