@@ -171,7 +171,7 @@ export default {
         return `transform: translate(0, ${translate}px);`;
       }
 
-      return `transform: translate(${translate}px, 0);`;
+      return `transform: translate(${translate + this.leftMargin + this.rightMargin}px, 0);`;
     },
     trackTransition() {
       if (this.initialized && this.isSliding) {

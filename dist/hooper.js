@@ -366,7 +366,7 @@
           return 'transform: translate(0, '.concat(translate, 'px);');
         }
 
-        return 'transform: translate('.concat(translate, 'px, 0);');
+        return 'transform: translate('.concat(translate + this.leftMargin + this.rightMargin, 'px, 0);');
       },
       trackTransition: function trackTransition() {
         if (this.initialized && this.isSliding) {
