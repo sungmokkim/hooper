@@ -352,7 +352,7 @@ var Carousel = {
       }
 
       if (this.slideBounds.upper === this.slidesCount - 1) {
-        return 'transform: translate('.concat(translate - this.horizontalMargin, 'px, 0);');
+        return 'transform: translate('.concat(translate, 'px, 0);');
       }
 
       return 'transform: translate('.concat(translate + this.horizontalMargin, 'px, 0);');

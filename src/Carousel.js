@@ -168,7 +168,7 @@ export default {
       }
 
       if (this.slideBounds.upper === this.slidesCount - 1) {
-        return `transform: translate(${translate - this.horizontalMargin}px, 0);`;
+        return `transform: translate(${translate}px, 0);`;
       }
 
       return `transform: translate(${translate + this.horizontalMargin}px, 0);`;
