@@ -108,11 +108,7 @@ export default {
       type: String,
       default: null
     },
-    leftMargin: {
-      default: 0,
-      type: Number
-    },
-    rightMargin: {
+    horizontalMargin: {
       default: 0,
       type: Number
     }
@@ -171,7 +167,11 @@ export default {
         return `transform: translate(0, ${translate}px);`;
       }
 
-      return `transform: translate(${translate + this.leftMargin}px, 0);`;
+      if (this.slideBounds.upper === this.slideCount - 1) {
+        return `transform: translate(${translate - this.horizontalMargin}px, 0);`;
+      }
+
+      return `transform: translate(${translate + this.horizontalMargin}px, 0);`;
     },
     trackTransition() {
       if (this.initialized && this.isSliding) {
@@ -331,7 +331,7 @@ export default {
         return;
       }
       this.slideWidth = this.containerWidth / this.config.itemsToShow;
-      this.containerWidth = this.containerWidth + this.leftMargin + this.rightMargin;
+      this.containerWidth = this.containerWidth + this.horizontalMargin * 2;
     },
     updateConfig() {
       const breakpoints = Object.keys(this.breakpoints).sort((a, b) => b - a);
