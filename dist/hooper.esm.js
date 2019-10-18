@@ -351,7 +351,7 @@ var Carousel = {
         return 'transform: translate(0, '.concat(translate, 'px);');
       }
 
-      if (this.slideBounds.upper === this.slideCount - 1) {
+      if (this.slideBounds.upper === this.slidesCount - 1) {
         return 'transform: translate('.concat(translate - this.horizontalMargin, 'px, 0);');
       }
 
