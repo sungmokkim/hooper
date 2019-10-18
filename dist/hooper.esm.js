@@ -355,7 +355,7 @@ var Carousel = {
         return 'transform: translate(0, '.concat(translate, 'px);');
       }
 
-      return 'transform: translate('.concat(translate + this.leftMargin + this.rightMargin, 'px, 0);');
+      return 'transform: translate('.concat(translate + this.leftMargin, 'px, 0);');
     },
     trackTransition: function trackTransition() {
       if (this.initialized && this.isSliding) {
@@ -506,7 +506,7 @@ var Carousel = {
       this.updateWidth();
       this.updateTrim();
       this.$emit('updated', {
-        containerWidth: this.containerWidth + this.leftMargin + this.rightMargin,
+        containerWidth: this.containerWidth,
         containerHeight: this.containerHeight,
         slideWidth: this.slideWidth,
         slideHeight: this.slideHeight,
@@ -540,6 +540,7 @@ var Carousel = {
       }
 
       this.slideWidth = this.containerWidth / this.config.itemsToShow;
+      this.containerWidth = this.containerWidth + this.leftMargin + this.rightMargin;
     },
     updateConfig: function updateConfig() {
       var _this3 = this;

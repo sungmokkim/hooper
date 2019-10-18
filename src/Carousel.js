@@ -171,7 +171,7 @@ export default {
         return `transform: translate(0, ${translate}px);`;
       }
 
-      return `transform: translate(${translate + this.leftMargin + this.rightMargin}px, 0);`;
+      return `transform: translate(${translate + this.leftMargin}px, 0);`;
     },
     trackTransition() {
       if (this.initialized && this.isSliding) {
@@ -305,7 +305,7 @@ export default {
       this.updateWidth();
       this.updateTrim();
       this.$emit('updated', {
-        containerWidth: this.containerWidth + this.leftMargin + this.rightMargin,
+        containerWidth: this.containerWidth,
         containerHeight: this.containerHeight,
         slideWidth: this.slideWidth,
         slideHeight: this.slideHeight,
@@ -331,6 +331,7 @@ export default {
         return;
       }
       this.slideWidth = this.containerWidth / this.config.itemsToShow;
+      this.containerWidth = this.containerWidth + this.leftMargin + this.rightMargin;
     },
     updateConfig() {
       const breakpoints = Object.keys(this.breakpoints).sort((a, b) => b - a);
