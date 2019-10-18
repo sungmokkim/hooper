@@ -1,10 +1,2 @@
 node_modules
-scripts
-src
-docs
-demo
-scripts
-jest.*
-.*
-coverage
 .gitignore

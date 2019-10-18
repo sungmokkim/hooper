@@ -107,6 +107,14 @@ export default {
     group: {
       type: String,
       default: null
+    },
+    leftMargin: {
+      default: false,
+      type: Number
+    },
+    rightMargin: {
+      default: false,
+      type: Number
     }
   },
   data() {
@@ -297,7 +305,7 @@ export default {
       this.updateWidth();
       this.updateTrim();
       this.$emit('updated', {
-        containerWidth: this.containerWidth + 300,
+        containerWidth: this.containerWidth + leftMargin + rightMargin,
         containerHeight: this.containerHeight,
         slideWidth: this.slideWidth,
         slideHeight: this.slideHeight,
