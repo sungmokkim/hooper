@@ -109,11 +109,11 @@ export default {
       default: null
     },
     leftMargin: {
-      default: false,
+      default: 0,
       type: Number
     },
     rightMargin: {
-      default: false,
+      default: 0,
       type: Number
     }
   },
@@ -305,7 +305,7 @@ export default {
       this.updateWidth();
       this.updateTrim();
       this.$emit('updated', {
-        containerWidth: this.containerWidth + leftMargin + rightMargin,
+        containerWidth: this.containerWidth + this.leftMargin + this.rightMargin,
         containerHeight: this.containerHeight,
         slideWidth: this.slideWidth,
         slideHeight: this.slideHeight,
