@@ -289,11 +289,7 @@ var Carousel = {
       type: String,
       default: null
     },
-    leftMargin: {
-      default: 0,
-      type: Number
-    },
-    rightMargin: {
+    horizontalMargin: {
       default: 0,
       type: Number
     }
@@ -355,7 +351,11 @@ var Carousel = {
         return 'transform: translate(0, '.concat(translate, 'px);');
       }
 
-      return 'transform: translate('.concat(translate + this.leftMargin, 'px, 0);');
+      if (this.slideBounds.upper === this.slideCount - 1) {
+        return 'transform: translate('.concat(translate - this.horizontalMargin, 'px, 0);');
+      }
+
+      return 'transform: translate('.concat(translate + this.horizontalMargin, 'px, 0);');
     },
     trackTransition: function trackTransition() {
       if (this.initialized && this.isSliding) {
@@ -540,7 +540,7 @@ var Carousel = {
       }
 
       this.slideWidth = this.containerWidth / this.config.itemsToShow;
-      this.containerWidth = this.containerWidth + this.leftMargin + this.rightMargin;
+      this.containerWidth = this.containerWidth + this.horizontalMargin * 2;
     },
     updateConfig: function updateConfig() {
       var _this3 = this;
