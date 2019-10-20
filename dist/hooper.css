@@ -5,6 +5,19 @@
   padding: 0;
   list-style: none;
 }
+.hooper-progress {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background-color: #efefef;
+}
+.hooper-progress-inner {
+  height: 100%;
+  background-color: #4285f4;
+  transition: 300ms;
+}
 .hooper-pagination {
   position: absolute;
   bottom: 0;
@@ -44,19 +57,6 @@
 }
 .hooper-pagination.is-vertical .hooper-indicator {
   width: 6px;
-}
-.hooper-progress {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 4px;
-  background-color: #efefef;
-}
-.hooper-progress-inner {
-  height: 100%;
-  background-color: #4285f4;
-  transition: 300ms;
 }
 .hooper-next,
 .hooper-prev {
