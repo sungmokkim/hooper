@@ -51,6 +51,13 @@ export default {
     isCurrent() {
       return this.index === this.$hooper.currentSlide;
     },
+    transition() {
+      if (this.isSmooth) {
+        return `transition: 1s ease-in-out;`;
+      } else {
+        return null;
+      }
+    },
     opacity() {
       if (this.isSmooth) {
         return this.isActive ? `opacity: 1;` : `opacity: 0;`;
@@ -76,7 +83,7 @@ export default {
       'li',
       {
         class: classes,
-        style: this.style + this.opacity,
+        style: this.style + this.transition + this.opacity,
         attrs: {
           'aria-hidden': !this.isActive
         }

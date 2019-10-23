@@ -1007,6 +1007,13 @@ var Slide = {
     isCurrent: function isCurrent() {
       return this.index === this.$hooper.currentSlide;
     },
+    transition: function transition() {
+      if (this.isSmooth) {
+        return 'transition: 1s ease-in-out;';
+      } else {
+        return null;
+      }
+    },
     opacity: function opacity() {
       if (this.isSmooth) {
         return this.isActive ? 'opacity: 1;' : 'opacity: 0;';
@@ -1030,7 +1037,7 @@ var Slide = {
       'li',
       {
         class: classes,
-        style: this.style + this.opacity,
+        style: this.style + this.transition + this.opacity,
         attrs: {
           'aria-hidden': !this.isActive
         }
