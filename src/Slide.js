@@ -16,16 +16,20 @@ export default {
     duration: {
       type: Number,
       default: null
+    },
+    isSmooth: {
+      type: Boolean,
+      required: true
     }
   },
   computed: {
     style() {
       const { config, slideHeight, slideWidth } = this.$hooper || {};
       if (config.vertical) {
-        return `height: ${slideHeight}px`;
+        return `height: ${slideHeight}px;`;
       }
 
-      return `width: ${slideWidth}px`;
+      return `width: ${slideWidth}px;`;
     },
     isActive() {
       const { upper, lower } = this.$hooper.slideBounds;
@@ -48,10 +52,18 @@ export default {
       return this.index === this.$hooper.currentSlide;
     },
     transition() {
-      return `transition: 0.2s ease-in-out`;
+      if (this.isSmooth) {
+        return `transition: 0.2s ease-in-out;`;
+      } else {
+        return null;
+      }
     },
     opacity() {
-      return this.isActive ? `opacity: 1` : `opacity: 0`;
+      if (this.isSmooth) {
+        return this.isActive ? `opacity: 1;` : `opacity: 0;`;
+      } else {
+        return null;
+      }
     }
   },
   render(h) {
@@ -61,7 +73,8 @@ export default {
       'is-active': this.isActive,
       'is-prev': this.isPrev,
       'is-next': this.isNext,
-      'is-current': this.isCurrent
+      'is-current': this.isCurrent,
+      'is-smooth': this.isSmooth
     };
 
     const children = normalizeChildren(this);
@@ -70,7 +83,7 @@ export default {
       'li',
       {
         class: classes,
-        style: this.style,
+        style: this.style + this.transition + this.opacity,
         attrs: {
           'aria-hidden': !this.isActive
         }

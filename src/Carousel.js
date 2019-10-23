@@ -118,6 +118,11 @@ export default {
     numberBeforeOnLastItem: {
       default: 1,
       type: Number
+    },
+    // if smooth, the slide disappears with opacity transition
+    isSmooth: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -585,7 +590,8 @@ function renderBufferSlides(h, slides) {
     clonedBefore.componentOptions.propsData.index = slideIndex;
     clonedBefore.data.props = {
       index: slideIndex,
-      isClone: true
+      isClone: true,
+      isSmooth: this.isSmooth
     };
 
     before.push(clonedBefore);
@@ -597,7 +603,8 @@ function renderBufferSlides(h, slides) {
     clonedAfter.key = clonedAfter.data.key;
     clonedAfter.data.props = {
       index: slideIndex,
-      isClone: true
+      isClone: true,
+      isSmooth: this.isSmooth
     };
     after.push(clonedAfter);
   }
@@ -629,7 +636,8 @@ function renderSlides(h) {
     child.data.props = {
       ...(child.data.props || {}),
       isClone: false,
-      index: idx++
+      index: idx++,
+      isSmooth: this.isSmooth
     };
 
     slides.push(child);

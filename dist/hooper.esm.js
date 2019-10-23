@@ -299,6 +299,11 @@ var Carousel = {
     numberBeforeOnLastItem: {
       default: 1,
       type: Number
+    },
+    // if smooth, the slide disappears with opacity transition
+    isSmooth: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
@@ -845,7 +850,8 @@ function renderBufferSlides(h, slides) {
     clonedBefore.componentOptions.propsData.index = slideIndex;
     clonedBefore.data.props = {
       index: slideIndex,
-      isClone: true
+      isClone: true,
+      isSmooth: this.isSmooth
     };
     before.push(clonedBefore);
     var clonedAfter = cloneNode(h, slide);
@@ -855,7 +861,8 @@ function renderBufferSlides(h, slides) {
     clonedAfter.key = clonedAfter.data.key;
     clonedAfter.data.props = {
       index: slideIndex,
-      isClone: true
+      isClone: true,
+      isSmooth: this.isSmooth
     };
     after.push(clonedAfter);
   }
@@ -887,7 +894,8 @@ function renderSlides(h) {
     child.key = idx;
     child.data.props = _objectSpread2({}, child.data.props || {}, {
       isClone: false,
-      index: idx++
+      index: idx++,
+      isSmooth: this.isSmooth
     });
     slides.push(child);
   } // update hooper's information of the slide count.
@@ -963,6 +971,10 @@ var Slide = {
     duration: {
       type: Number,
       default: null
+    },
+    isSmooth: {
+      type: Boolean,
+      required: true
     }
   },
   computed: {
@@ -973,10 +985,10 @@ var Slide = {
         slideWidth = _ref.slideWidth;
 
       if (config.vertical) {
-        return 'height: '.concat(slideHeight, 'px');
+        return 'height: '.concat(slideHeight, 'px;');
       }
 
-      return 'width: '.concat(slideWidth, 'px');
+      return 'width: '.concat(slideWidth, 'px;');
     },
     isActive: function isActive() {
       var _this$$hooper$slideBo = this.$hooper.slideBounds,
@@ -998,10 +1010,18 @@ var Slide = {
       return this.index === this.$hooper.currentSlide;
     },
     transition: function transition() {
-      return 'transition: 0.2s ease-in-out';
+      if (this.isSmooth) {
+        return 'transition: 0.2s ease-in-out;';
+      } else {
+        return null;
+      }
     },
     opacity: function opacity() {
-      return this.isActive ? 'opacity: 1' : 'opacity: 0';
+      if (this.isSmooth) {
+        return this.isActive ? 'opacity: 1;' : 'opacity: 0;';
+      } else {
+        return null;
+      }
     }
   },
   render: function render(h) {
@@ -1011,14 +1031,15 @@ var Slide = {
       'is-active': this.isActive,
       'is-prev': this.isPrev,
       'is-next': this.isNext,
-      'is-current': this.isCurrent
+      'is-current': this.isCurrent,
+      'is-smooth': this.isSmooth
     };
     var children = normalizeChildren(this);
     return h(
       'li',
       {
         class: classes,
-        style: this.style,
+        style: this.style + this.transition + this.opacity,
         attrs: {
           'aria-hidden': !this.isActive
         }
