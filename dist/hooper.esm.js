@@ -1018,7 +1018,7 @@ var Slide = {
       'li',
       {
         class: classes,
-        style: this.style + this.transition + this.opacity,
+        style: this.style,
         attrs: {
           'aria-hidden': !this.isActive
         }
