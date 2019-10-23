@@ -289,8 +289,15 @@ var Carousel = {
       type: String,
       default: null
     },
+    //margin of fist and last items within hooper
     horizontalMargin: {
       default: 0,
+      type: Number
+    },
+    // this is for hooper to emit a 'onLastItem' action. Default is 1 (just right before the actual last item)
+    // this can be utilized when fetching might take a long time. so increase this number to call fetch action early
+    numberBeforeOnLastItem: {
+      default: 1,
       type: Number
     }
   },
@@ -349,11 +356,11 @@ var Carousel = {
 
       if (vertical) {
         return 'transform: translate(0, '.concat(translate, 'px);');
-      }
+      } // when it is a last item, don't add margin
 
       if (this.slideBounds.upper === this.slidesCount - 1) {
         return 'transform: translate('.concat(translate, 'px, 0);');
-      }
+      } //when it is not a last item, add margin
 
       return 'transform: translate('.concat(translate + this.horizontalMargin, 'px, 0);');
     },
@@ -416,7 +423,14 @@ var Carousel = {
       this.$emit('slide', {
         currentSlide: this.currentSlide,
         slideFrom: previousSlide
-      });
+      }); // when it is time to emit onLastItem action
+
+      if (this.slideBounds.upper === this.slidesCount - this.numberBeforeOnLastItem) {
+        this.$emit('onLastItem', {
+          currentSlide: this.currentSlide,
+          slideFrom: previousSlide
+        });
+      }
     },
     slideNext: function slideNext() {
       this.slideTo(this.currentSlide + this.config.itemsToSlide);
