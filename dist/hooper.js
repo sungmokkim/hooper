@@ -987,7 +987,7 @@
       },
       isSmooth: {
         type: Boolean,
-        required: true
+        default: true
       }
     },
     computed: {
