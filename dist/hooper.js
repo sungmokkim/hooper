@@ -995,6 +995,12 @@
       },
       isCurrent: function isCurrent() {
         return this.index === this.$hooper.currentSlide;
+      },
+      transition: function transition() {
+        return 'transition: 0.2s ease-in-out';
+      },
+      opacity: function opacity() {
+        return this.isActive ? 'opacity: 1' : 'opacity: 0';
       }
     },
     render: function render(h) {
@@ -1011,7 +1017,7 @@
         'li',
         {
           class: classes,
-          style: this.style,
+          style: this.style + this.transition + this.opacity,
           attrs: {
             'aria-hidden': !this.isActive
           }
