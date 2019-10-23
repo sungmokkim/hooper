@@ -850,8 +850,7 @@ function renderBufferSlides(h, slides) {
     clonedBefore.componentOptions.propsData.index = slideIndex;
     clonedBefore.data.props = {
       index: slideIndex,
-      isClone: true,
-      isSmooth: this.isSmooth
+      isClone: true
     };
     before.push(clonedBefore);
     var clonedAfter = cloneNode(h, slide);
@@ -861,8 +860,7 @@ function renderBufferSlides(h, slides) {
     clonedAfter.key = clonedAfter.data.key;
     clonedAfter.data.props = {
       index: slideIndex,
-      isClone: true,
-      isSmooth: this.isSmooth
+      isClone: true
     };
     after.push(clonedAfter);
   }
@@ -1009,13 +1007,6 @@ var Slide = {
     isCurrent: function isCurrent() {
       return this.index === this.$hooper.currentSlide;
     },
-    transition: function transition() {
-      if (this.isSmooth) {
-        return 'transition: 0.2s ease-in-out;';
-      } else {
-        return null;
-      }
-    },
     opacity: function opacity() {
       if (this.isSmooth) {
         return this.isActive ? 'opacity: 1;' : 'opacity: 0;';
@@ -1039,7 +1030,7 @@ var Slide = {
       'li',
       {
         class: classes,
-        style: this.style + this.transition + this.opacity,
+        style: this.style + this.opacity,
         attrs: {
           'aria-hidden': !this.isActive
         }

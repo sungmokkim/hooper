@@ -590,8 +590,7 @@ function renderBufferSlides(h, slides) {
     clonedBefore.componentOptions.propsData.index = slideIndex;
     clonedBefore.data.props = {
       index: slideIndex,
-      isClone: true,
-      isSmooth: this.isSmooth
+      isClone: true
     };
 
     before.push(clonedBefore);
@@ -603,8 +602,7 @@ function renderBufferSlides(h, slides) {
     clonedAfter.key = clonedAfter.data.key;
     clonedAfter.data.props = {
       index: slideIndex,
-      isClone: true,
-      isSmooth: this.isSmooth
+      isClone: true
     };
     after.push(clonedAfter);
   }
