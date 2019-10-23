@@ -1009,7 +1009,7 @@ var Slide = {
     },
     transition: function transition() {
       if (this.isSmooth) {
-        return 'transition: 1s ease-in-out;';
+        return 'transition: opacity 1s ease-in-out;';
       } else {
         return null;
       }
