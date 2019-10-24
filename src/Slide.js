@@ -16,10 +16,6 @@ export default {
     duration: {
       type: Number,
       default: null
-    },
-    isSmooth: {
-      type: Boolean,
-      default: true
     }
   },
   computed: {
@@ -52,14 +48,18 @@ export default {
       return this.index === this.$hooper.currentSlide;
     },
     transition() {
-      if (this.isSmooth) {
-        return `transition: opacity 1s ease-in-out;`;
+      const { fadeInOut, transition } = this.$hooper.config;
+
+      if (fadeInOut) {
+        return `transition: opacity ${transition * 0.9}ms ease-in-out;`;
       } else {
         return null;
       }
     },
     opacity() {
-      if (this.isSmooth) {
+      const { fadeInOut } = this.$hooper.config;
+
+      if (fadeInOut) {
         return this.isActive ? `opacity: 1;` : `opacity: 0;`;
       } else {
         return null;
@@ -73,8 +73,7 @@ export default {
       'is-active': this.isActive,
       'is-prev': this.isPrev,
       'is-next': this.isNext,
-      'is-current': this.isCurrent,
-      'is-smooth': this.isSmooth
+      'is-current': this.isCurrent
     };
 
     const children = normalizeChildren(this);

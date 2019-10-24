@@ -119,8 +119,8 @@ export default {
       default: 1,
       type: Number
     },
-    // if smooth, the slide disappears with opacity transition
-    isSmooth: {
+    // if fadeInOut, the slide disappears with opacity transition
+    fadeInOut: {
       type: Boolean,
       default: false
     }
@@ -185,7 +185,7 @@ export default {
       }
 
       //when it is not a last item, add margin
-      return `transform: translate(${translate + this.horizontalMargin}px, 0);`;
+      return `transform: translate(${translate + this.config.horizontalMargin}px, 0);`;
     },
     trackTransition() {
       if (this.initialized && this.isSliding) {
@@ -248,7 +248,7 @@ export default {
       });
 
       // when it is time to emit onLastItem action
-      if (this.slideBounds.upper === this.slidesCount - this.numberBeforeOnLastItem) {
+      if (this.slideBounds.upper >= this.slidesCount - this.config.numberBeforeOnLastItem) {
         this.$emit('onLastItem', {
           currentSlide: this.currentSlide,
           slideFrom: previousSlide
@@ -353,7 +353,7 @@ export default {
         return;
       }
       this.slideWidth = this.containerWidth / this.config.itemsToShow;
-      this.containerWidth = this.containerWidth + this.horizontalMargin * 2;
+      this.containerWidth = this.containerWidth + this.config.horizontalMargin * 2;
     },
     updateConfig() {
       const breakpoints = Object.keys(this.breakpoints).sort((a, b) => b - a);
@@ -634,8 +634,7 @@ function renderSlides(h) {
     child.data.props = {
       ...(child.data.props || {}),
       isClone: false,
-      index: idx++,
-      isSmooth: this.isSmooth
+      index: idx++
     };
 
     slides.push(child);

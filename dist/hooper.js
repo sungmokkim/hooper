@@ -309,8 +309,8 @@
         default: 1,
         type: Number
       },
-      // if smooth, the slide disappears with opacity transition
-      isSmooth: {
+      // if fadeInOut, the slide disappears with opacity transition
+      fadeInOut: {
         type: Boolean,
         default: false
       }
@@ -378,7 +378,7 @@
           return 'transform: translate('.concat(translate, 'px, 0);');
         } //when it is not a last item, add margin
 
-        return 'transform: translate('.concat(translate + this.horizontalMargin, 'px, 0);');
+        return 'transform: translate('.concat(translate + this.config.horizontalMargin, 'px, 0);');
       },
       trackTransition: function trackTransition() {
         if (this.initialized && this.isSliding) {
@@ -443,7 +443,7 @@
           slideFrom: previousSlide
         }); // when it is time to emit onLastItem action
 
-        if (this.slideBounds.upper === this.slidesCount - this.numberBeforeOnLastItem) {
+        if (this.slideBounds.upper >= this.slidesCount - this.config.numberBeforeOnLastItem) {
           this.$emit('onLastItem', {
             currentSlide: this.currentSlide,
             slideFrom: previousSlide
@@ -572,7 +572,7 @@
         }
 
         this.slideWidth = this.containerWidth / this.config.itemsToShow;
-        this.containerWidth = this.containerWidth + this.horizontalMargin * 2;
+        this.containerWidth = this.containerWidth + this.config.horizontalMargin * 2;
       },
       updateConfig: function updateConfig() {
         var _this3 = this;
@@ -905,8 +905,7 @@
       child.key = idx;
       child.data.props = _objectSpread2({}, child.data.props || {}, {
         isClone: false,
-        index: idx++,
-        isSmooth: this.isSmooth
+        index: idx++
       });
       slides.push(child);
     } // update hooper's information of the slide count.
@@ -982,10 +981,6 @@
       duration: {
         type: Number,
         default: null
-      },
-      isSmooth: {
-        type: Boolean,
-        default: true
       }
     },
     computed: {
@@ -1021,14 +1016,20 @@
         return this.index === this.$hooper.currentSlide;
       },
       transition: function transition() {
-        if (this.isSmooth) {
-          return 'transition: opacity 1s ease-in-out;';
+        var _this$$hooper$config = this.$hooper.config,
+          fadeInOut = _this$$hooper$config.fadeInOut,
+          transition = _this$$hooper$config.transition;
+
+        if (fadeInOut) {
+          return 'transition: opacity '.concat(transition * 0.9, 'ms ease-in-out;');
         } else {
           return null;
         }
       },
       opacity: function opacity() {
-        if (this.isSmooth) {
+        var fadeInOut = this.$hooper.config.fadeInOut;
+
+        if (fadeInOut) {
           return this.isActive ? 'opacity: 1;' : 'opacity: 0;';
         } else {
           return null;
@@ -1042,8 +1043,7 @@
         'is-active': this.isActive,
         'is-prev': this.isPrev,
         'is-next': this.isNext,
-        'is-current': this.isCurrent,
-        'is-smooth': this.isSmooth
+        'is-current': this.isCurrent
       };
       var children = normalizeChildren(this);
       return h(
