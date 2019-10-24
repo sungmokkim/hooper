@@ -443,7 +443,7 @@
           slideFrom: previousSlide
         }); // when it is time to emit onLastItem action
 
-        if (this.slideBounds.upper >= this.slidesCount - this.config.numberBeforeOnLastItem) {
+        if (this.slideBounds.upper === this.slidesCount - this.config.numberBeforeOnLastItem) {
           this.$emit('onLastItem', {
             currentSlide: this.currentSlide,
             slideFrom: previousSlide
