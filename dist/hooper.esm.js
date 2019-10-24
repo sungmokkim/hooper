@@ -1008,7 +1008,7 @@ var Slide = {
         transition = _this$$hooper$config.transition;
 
       if (fadeInOut) {
-        return 'transition: opacity '.concat(transition, 'ms ease-in;');
+        return 'transition: opacity '.concat(transition * 0.9, 'ms ease-in-out;');
       } else {
         return null;
       }
