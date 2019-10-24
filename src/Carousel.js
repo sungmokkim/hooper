@@ -249,13 +249,10 @@ export default {
 
       // when it is time to emit onLastItem action
       if (this.slideBounds.upper === this.slidesCount - this.config.numberBeforeOnLastItem) {
-        // set time out
-        window.setTimeout(() => {
-          this.$emit('onLastItem', {
-            currentSlide: this.currentSlide,
-            slideFrom: previousSlide
-          });
-        }, transition);
+        this.$emit('onLastItem', {
+          currentSlide: this.currentSlide,
+          slideFrom: previousSlide
+        });
       }
     },
     slideNext() {
