@@ -51,7 +51,7 @@ export default {
       const { fadeInOut, transition } = this.$hooper.config;
 
       if (fadeInOut) {
-        return `transition: opacity ${transition * 0.9}ms ease-in-out;`;
+        return `transition: opacity ${transition * 0.8}ms ease-in-out;`;
       } else {
         return null;
       }
