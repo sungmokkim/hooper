@@ -240,6 +240,10 @@ export default {
       window.setTimeout(() => {
         this.isSliding = false;
         this.currentSlide = normalizeSlideIndex(index, this.slidesCount);
+
+        this.$emit('afterSlide', {
+          currentSlide: this.currentSlide
+        });
       }, transition);
 
       this.$emit('slide', {
@@ -459,9 +463,6 @@ export default {
     },
     onTransitionend() {
       // this.isSliding = false;
-      this.$emit('afterSlide', {
-        currentSlide: this.currentSlide
-      });
     },
     onKeypress(event) {
       const key = event.key;

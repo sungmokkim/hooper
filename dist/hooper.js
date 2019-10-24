@@ -437,6 +437,10 @@
         window.setTimeout(function() {
           _this.isSliding = false;
           _this.currentSlide = normalizeSlideIndex(index, _this.slidesCount);
+
+          _this.$emit('afterSlide', {
+            currentSlide: _this.currentSlide
+          });
         }, transition);
         this.$emit('slide', {
           currentSlide: this.currentSlide,
@@ -701,9 +705,6 @@
       },
       onTransitionend: function onTransitionend() {
         // this.isSliding = false;
-        this.$emit('afterSlide', {
-          currentSlide: this.currentSlide
-        });
       },
       onKeypress: function onKeypress(event) {
         var key = event.key;
