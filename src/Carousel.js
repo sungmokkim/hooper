@@ -458,7 +458,7 @@ export default {
       this.restartTimer();
     },
     onTransitionend() {
-      this.isSliding = false;
+      // this.isSliding = false;
       this.$emit('afterSlide', {
         currentSlide: this.currentSlide
       });

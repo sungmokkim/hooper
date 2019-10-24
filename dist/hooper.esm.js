@@ -687,7 +687,7 @@ var Carousel = {
       this.restartTimer();
     },
     onTransitionend: function onTransitionend() {
-      this.isSliding = false;
+      // this.isSliding = false;
       this.$emit('afterSlide', {
         currentSlide: this.currentSlide
       });
