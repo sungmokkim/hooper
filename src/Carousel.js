@@ -123,6 +123,11 @@ export default {
     fadeInOut: {
       type: Boolean,
       default: false
+    },
+    // custom trimEnd
+    customTrimEnd: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -339,13 +344,19 @@ export default {
       });
     },
     updateTrim() {
-      const { trimWhiteSpace, itemsToShow, centerMode, infiniteScroll } = this.config;
+      const { trimWhiteSpace, itemsToShow, centerMode, infiniteScroll, customTrimEnd } = this.config;
       if (!trimWhiteSpace || infiniteScroll) {
         this.trimStart = 0;
         this.trimEnd = 1;
         return;
       }
       this.trimStart = centerMode ? Math.floor((itemsToShow - 1) / 2) : 0;
+
+      if (customTrimEnd) {
+        this.trimEnd = customTrimEnd;
+        return;
+      }
+
       this.trimEnd = centerMode ? Math.ceil(itemsToShow / 2) : itemsToShow;
     },
     updateWidth() {
