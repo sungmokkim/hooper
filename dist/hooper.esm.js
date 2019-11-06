@@ -304,6 +304,11 @@ var Carousel = {
     fadeInOut: {
       type: Boolean,
       default: false
+    },
+    // custom trimEnd
+    customTrimEnd: {
+      type: Number,
+      default: 0
     }
   },
   data: function data() {
@@ -541,7 +546,8 @@ var Carousel = {
         trimWhiteSpace = _this$config3.trimWhiteSpace,
         itemsToShow = _this$config3.itemsToShow,
         centerMode = _this$config3.centerMode,
-        infiniteScroll = _this$config3.infiniteScroll;
+        infiniteScroll = _this$config3.infiniteScroll,
+        customTrimEnd = _this$config3.customTrimEnd;
 
       if (!trimWhiteSpace || infiniteScroll) {
         this.trimStart = 0;
@@ -550,6 +556,12 @@ var Carousel = {
       }
 
       this.trimStart = centerMode ? Math.floor((itemsToShow - 1) / 2) : 0;
+
+      if (customTrimEnd) {
+        this.trimEnd = customTrimEnd;
+        return;
+      }
+
       this.trimEnd = centerMode ? Math.ceil(itemsToShow / 2) : itemsToShow;
     },
     updateWidth: function updateWidth() {
