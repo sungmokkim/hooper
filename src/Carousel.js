@@ -184,8 +184,11 @@ export default {
         return `transform: translate(0, ${translate}px);`;
       }
 
+      const lastItem = this.slideBounds.upper === this.slidesCount - 1;
+      const slideCountGreaterThanItemsToShow = this.slidesCount >= this.config.itemsToShow;
+
       // when it is a last item, don't add margin
-      if (this.slideBounds.upper === this.slidesCount - 1) {
+      if (lastItem && slideCountGreaterThanItemsToShow) {
         return `transform: translate(${translate}px, 0);`;
       }
 

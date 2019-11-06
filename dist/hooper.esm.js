@@ -366,9 +366,12 @@ var Carousel = {
 
       if (vertical) {
         return 'transform: translate(0, '.concat(translate, 'px);');
-      } // when it is a last item, don't add margin
+      }
 
-      if (this.slideBounds.upper === this.slidesCount - 1) {
+      var lastItem = this.slideBounds.upper === this.slidesCount - 1;
+      var slideCountGreaterThanItemsToShow = this.slidesCount >= this.config.itemsToShow; // when it is a last item, don't add margin
+
+      if (lastItem && slideCountGreaterThanItemsToShow) {
         return 'transform: translate('.concat(translate, 'px, 0);');
       } //when it is not a last item, add margin
 
