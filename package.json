@@ -67,5 +67,7 @@
       "jest --maxWorkers=1 --bail --findRelatedTests"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "core-js": "^3.4.0"
+  }
 }

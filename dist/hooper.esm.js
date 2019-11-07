@@ -3,7 +3,17 @@
  * (c) 2019
  * @license MIT
  */
+import 'core-js/modules/es6.function.name';
+import 'core-js/modules/es6.string.starts-with';
+import 'core-js/modules/web.dom.iterable';
+import 'core-js/modules/es6.array.iterator';
+import 'core-js/modules/es6.object.keys';
+import 'core-js/modules/es6.array.sort';
+import 'core-js/modules/es6.number.constructor';
 import Vue from 'vue';
+import 'core-js/modules/es6.math.sign';
+import 'core-js/modules/es6.object.assign';
+import 'core-js/modules/es6.regexp.replace';
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {

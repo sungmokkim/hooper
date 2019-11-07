@@ -1,3 +1,16 @@
+.hooper-progress {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  background-color: #efefef;
+}
+.hooper-progress-inner {
+  height: 100%;
+  background-color: #4285f4;
+  transition: 300ms;
+}
 .hooper-pagination {
   position: absolute;
   bottom: 0;
@@ -38,25 +51,53 @@
 .hooper-pagination.is-vertical .hooper-indicator {
   width: 6px;
 }
+.hooper-next,
+.hooper-prev {
+  background-color: transparent;
+  border: none;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.hooper-next.is-disabled,
+.hooper-prev.is-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.hooper-next {
+  right: 0;
+}
+.hooper-prev {
+  left: 0;
+}
+.hooper-navigation.is-vertical .hooper-next {
+  top: auto;
+  bottom: 0;
+  transform: initial;
+}
+.hooper-navigation.is-vertical .hooper-prev {
+  top: 0;
+  bottom: auto;
+  right: 0;
+  left: auto;
+  transform: initial;
+}
+.hooper-navigation.is-rtl .hooper-prev {
+  left: auto;
+  right: 0;
+}
+.hooper-navigation.is-rtl .hooper-next {
+  right: auto;
+  left: 0;
+}
 .hooper-slide {
   flex-shrink: 0;
   height: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
-}
-.hooper-progress {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 4px;
-  background-color: #efefef;
-}
-.hooper-progress-inner {
-  height: 100%;
-  background-color: #4285f4;
-  transition: 300ms;
 }
 .hooper {
   position: relative;
@@ -98,44 +139,4 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}.hooper-next,
-.hooper-prev {
-  background-color: transparent;
-  border: none;
-  padding: 1em;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-.hooper-next.is-disabled,
-.hooper-prev.is-disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-.hooper-next {
-  right: 0;
-}
-.hooper-prev {
-  left: 0;
-}
-.hooper-navigation.is-vertical .hooper-next {
-  top: auto;
-  bottom: 0;
-  transform: initial;
-}
-.hooper-navigation.is-vertical .hooper-prev {
-  top: 0;
-  bottom: auto;
-  right: 0;
-  left: auto;
-  transform: initial;
-}
-.hooper-navigation.is-rtl .hooper-prev {
-  left: auto;
-  right: 0;
-}
-.hooper-navigation.is-rtl .hooper-next {
-  right: auto;
-  left: 0;
 }
