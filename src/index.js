@@ -1,6 +1,4 @@
-import fromPoly from './fromPoly';
-
-fromPoly();
+import 'core-js/features/array/from';
 
 import Carousel from './Carousel';
 import Slide from './Slide';

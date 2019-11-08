@@ -4,6 +4,7 @@
       "@babel/preset-env", {
         "targets": ["last 2 versions", "ie >= 9"],
         "modules": false,
+        "useBuiltIns" : "entry"
       }
     ]
   ],
