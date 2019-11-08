@@ -12,6 +12,10 @@ import 'core-js/modules/es6.array.sort';
 import 'core-js/modules/es6.number.constructor';
 import Vue from 'vue';
 import 'core-js/modules/es6.math.sign';
+import 'core-js/modules/es6.string.iterator';
+import 'core-js/modules/es6.array.from';
+import 'core-js/modules/es6.regexp.to-string';
+import 'core-js/modules/es6.date.to-string';
 import 'core-js/modules/es6.object.assign';
 import 'core-js/modules/es6.regexp.replace';
 
@@ -173,7 +177,7 @@ function assignPoly(target) {
   return to;
 }
 
-var assign = Object.assign || assignPoly;
+var assign = Object.assign || assignPoly; // IE11 :D
 
 function signPoly(value) {
   if (value < 0) {

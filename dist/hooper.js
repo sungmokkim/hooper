@@ -16,6 +16,10 @@
         require('core-js/modules/es6.number.constructor'),
         require('vue'),
         require('core-js/modules/es6.math.sign'),
+        require('core-js/modules/es6.string.iterator'),
+        require('core-js/modules/es6.array.from'),
+        require('core-js/modules/es6.regexp.to-string'),
+        require('core-js/modules/es6.date.to-string'),
         require('core-js/modules/es6.object.assign'),
         require('core-js/modules/es6.regexp.replace')
       )
@@ -31,6 +35,10 @@
         'core-js/modules/es6.number.constructor',
         'vue',
         'core-js/modules/es6.math.sign',
+        'core-js/modules/es6.string.iterator',
+        'core-js/modules/es6.array.from',
+        'core-js/modules/es6.regexp.to-string',
+        'core-js/modules/es6.date.to-string',
         'core-js/modules/es6.object.assign',
         'core-js/modules/es6.regexp.replace'
       ], factory)
@@ -208,7 +216,7 @@
     return to;
   }
 
-  var assign = Object.assign || assignPoly;
+  var assign = Object.assign || assignPoly; // IE11 :D
 
   function signPoly(value) {
     if (value < 0) {
