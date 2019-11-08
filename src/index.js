@@ -1,5 +1,3 @@
-import 'core-js/modules/es.array.from';
-import 'regenerator-runtime/runtime';
 import Carousel from './Carousel';
 import Slide from './Slide';
 import addonMixin from './addons/Mixin';

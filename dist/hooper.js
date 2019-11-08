@@ -5,11 +5,47 @@
  */
 (function(global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
-    ? factory(exports, require('core-js/modules/es.array.from'), require('regenerator-runtime/runtime'), require('vue'))
+    ? factory(
+        exports,
+        require('core-js/modules/es6.function.name'),
+        require('core-js/modules/es6.string.starts-with'),
+        require('core-js/modules/web.dom.iterable'),
+        require('core-js/modules/es6.array.iterator'),
+        require('core-js/modules/es6.object.keys'),
+        require('core-js/modules/es6.array.sort'),
+        require('core-js/modules/es6.number.constructor'),
+        require('vue'),
+        require('core-js/modules/es6.math.sign'),
+        require('core-js/modules/es6.object.assign'),
+        require('core-js/modules/es6.regexp.replace')
+      )
     : typeof define === 'function' && define.amd
-    ? define(['exports', 'core-js/modules/es.array.from', 'regenerator-runtime/runtime', 'vue'], factory)
-    : ((global = global || self), factory((global.Hooper = {}), null, null, global.Vue));
-})(this, function(exports, es_array_from, runtime, Vue) {
+    ? define([
+        'exports',
+        'core-js/modules/es6.function.name',
+        'core-js/modules/es6.string.starts-with',
+        'core-js/modules/web.dom.iterable',
+        'core-js/modules/es6.array.iterator',
+        'core-js/modules/es6.object.keys',
+        'core-js/modules/es6.array.sort',
+        'core-js/modules/es6.number.constructor',
+        'vue',
+        'core-js/modules/es6.math.sign',
+        'core-js/modules/es6.object.assign',
+        'core-js/modules/es6.regexp.replace'
+      ], factory)
+    : ((global = global || self), factory((global.Hooper = {}), null, null, null, null, null, null, null, global.Vue));
+})(this, function(
+  exports,
+  es6_function_name,
+  es6_string_startsWith,
+  web_dom_iterable,
+  es6_array_iterator,
+  es6_object_keys,
+  es6_array_sort,
+  es6_number_constructor,
+  Vue
+) {
   'use strict';
 
   Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
