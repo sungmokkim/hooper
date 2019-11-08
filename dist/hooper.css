@@ -11,13 +11,6 @@
   background-color: #4285f4;
   transition: 300ms;
 }
-.hooper-slide {
-  flex-shrink: 0;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 .hooper-next,
 .hooper-prev {
   background-color: transparent;
@@ -58,6 +51,13 @@
 .hooper-navigation.is-rtl .hooper-next {
   right: auto;
   left: 0;
+}
+.hooper-slide {
+  flex-shrink: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 .hooper-pagination {
   position: absolute;

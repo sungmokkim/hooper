@@ -1,3 +1,7 @@
+import fromPoly from './fromPoly';
+
+fromPoly();
+
 import Carousel from './Carousel';
 import Slide from './Slide';
 import addonMixin from './addons/Mixin';
