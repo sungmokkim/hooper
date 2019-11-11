@@ -3,7 +3,6 @@
  * (c) 2019
  * @license MIT
  */
-import 'core-js/features/array/from';
 import Vue from 'vue';
 
 function _defineProperty(obj, key, value) {

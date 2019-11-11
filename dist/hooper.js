@@ -5,11 +5,11 @@
  */
 (function(global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
-    ? factory(exports, require('core-js/features/array/from'), require('vue'))
+    ? factory(exports, require('vue'))
     : typeof define === 'function' && define.amd
-    ? define(['exports', 'core-js/features/array/from', 'vue'], factory)
-    : ((global = global || self), factory((global.Hooper = {}), null, global.Vue));
-})(this, function(exports, from, Vue) {
+    ? define(['exports', 'vue'], factory)
+    : ((global = global || self), factory((global.Hooper = {}), global.Vue));
+})(this, function(exports, Vue) {
   'use strict';
 
   Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;

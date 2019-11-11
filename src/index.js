@@ -1,5 +1,3 @@
-import 'core-js/features/array/from';
-
 import Carousel from './Carousel';
 import Slide from './Slide';
 import addonMixin from './addons/Mixin';
